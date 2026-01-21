@@ -1,0 +1,17 @@
+[package]
+name = "pollux-polyglot-native-bridge"
+version = "0.1.0"
+edition = "2021"
+authors = ["Pollux Runtime Project"]
+description = "Sovereign boundary layer for external language integration with Pollux Runtime"
+license = "MIT"
+repository = "https://github.com/HoujouSxnnyside/Pollux-Polyglot-Native-Bridge"
+rust-version = "1.70"
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+pollux-capabilities = { git = "ssh://git@github.com/HoujouSxnnyside/Pollux-Capabilities.git", tag = "v0.1.0" }
+pollux-contracts = { git = "ssh://git@github.com/HoujouSxnnyside/Pollux-Contracts.git", tag = "v0.1.0" }
