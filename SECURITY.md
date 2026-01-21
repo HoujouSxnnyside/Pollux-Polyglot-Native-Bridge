@@ -1,260 +1,259 @@
 # SECURITY
-## Política de Divulgación Responsable
+## Responsible Disclosure Policy
 
-**Importante:**  
-Pollux Polyglot Native Bridge es un proyecto de código abierto y frontera crítica
-del ecosistema Pollux.
+**Critical Context:**  
+Pollux Polyglot Native Bridge is an open-source project and a critical boundary
+of the Pollux ecosystem.
 
-Toda vulnerabilidad, debilidad de frontera o vector de fuga de autoridad debe
-ser reportada de forma responsable siguiendo este procedimiento.
-
----
-
-## 1. Propósito
-
-Este documento define el **procedimiento obligatorio** para reportar
-vulnerabilidades, debilidades de frontera o implicaciones de seguridad relacionadas
-con Pollux Polyglot Native Bridge.
-
-Pollux Polyglot Native Bridge es **crítico para la seguridad del ecosistema**, ya que:
-
-- Define la única frontera autorizada con sistemas externos.
-- Traduce intención externa en solicitudes de Pollux.
-- Previene fuga de autoridad.
-- Valida contratos antes de cualquier invocación.
-- Aísla el Kernel de acceso externo.
-
-Un defecto en Pollux Polyglot Native Bridge puede:
-
-- Permitir bypass de contratos.
-- Exponer estructuras internas de Pollux.
-- Habilitar invocaciones no autorizadas.
-- Debilitar enforcement del Kernel.
-- Filtrar autoridad a sistemas externos.
-- Comprometer aislamiento de lenguajes.
-
-Una frontera permeable es una vulnerabilidad estructural.
+All vulnerabilities, boundary weaknesses, or authority leakage vectors must
+be reported responsibly following this procedure.
 
 ---
 
-## 2. Alcance
+## 1. Purpose
 
-Esta política aplica a cualquier hallazgo relacionado con:
+This document defines the **mandatory procedure** for reporting
+vulnerabilities, boundary weaknesses, or security implications related to
+Pollux Polyglot Native Bridge.
 
-- Modelos de solicitud/respuesta.
-- Lógica de traducción de intención.
-- Validación de contratos en frontera.
-- Exposición de APIs internas.
-- Serialización y deserialización.
-- Manejo de estado en frontera.
-- Interacción con bindings externos.
-- Semántica de tipos y modelos.
-- Documentación que pueda inducir uso inseguro.
+Pollux Polyglot Native Bridge is **critical to ecosystem security** because:
 
-Incluye vulnerabilidades confirmadas y **potenciales**.
+- It defines the sole authorized boundary with external systems.
+- It translates external intent into Pollux requests.
+- It prevents authority leakage.
+- It validates contracts before any invocation.
+- It isolates the Kernel from external access.
 
----
+A defect in Pollux Polyglot Native Bridge can:
 
-## 3. Tipos de Amenazas
+- Permit contract bypass.
+- Expose internal Pollux structures.
+- Enable unauthorized invocations.
+- Weaken Kernel enforcement.
+- Leak authority to external systems.
+- Compromise language isolation.
 
-### Fuga de Autoridad
-
-La frontera permite que un sistema externo:
-
-- Invoque operaciones sin validación de contratos.
-- Acceda a estructuras internas del Kernel.
-- Bypasea enforcement de capacidades.
-- Obtenga autoridad no concedida.
+A permeable boundary is a structural vulnerability.
 
 ---
 
-### Bypass de Contratos
+## 2. Scope
 
-Solicitudes que:
+This policy applies to any finding related to:
 
-- Eluden validación de Pollux Contracts.
-- Permiten invocaciones no autorizadas.
-- Escapan enforcement de frontera.
+- Request/response models.
+- Intent translation logic.
+- Contract validation at the boundary.
+- Internal API exposure.
+- Serialization and deserialization.
+- Boundary state handling.
+- Interaction with external bindings.
+- Type and model semantics.
+- Documentation that may induce insecure usage.
 
----
-
-### Ambigüedad de Modelos
-
-Modelos de solicitud/respuesta que:
-
-- Permiten interpretaciones múltiples.
-- Introducen estados indefinidos.
-- Habilitan comportamiento implícito.
+Includes confirmed and **potential** vulnerabilities.
 
 ---
 
-### Exposición Indebida
+## 3. Threat Categories
 
-La frontera expone:
+### Authority Leakage
 
-- APIs internas del Kernel.
-- Detalles de implementación.
-- Estructuras de datos privadas.
-- Lógica de enforcement.
+The boundary permits an external system to:
 
----
-
-### Abuso de Contribuciones
-
-Contribuciones maliciosas que intentan:
-
-- Relajar validación.
-- Introducir backdoors.
-- Debilitar frontera.
-- Expandir autoridad externa.
+- Invoke operations without contract validation.
+- Access internal Kernel structures.
+- Bypass capability enforcement.
+- Obtain ungranted authority.
 
 ---
 
-## 4. Canales de Reporte
+### Contract Bypass
 
-### Vulnerabilidades Confirmadas
+Requests that:
 
-Para vulnerabilidades confirmadas, use:
+- Evade Pollux Contracts validation.
+- Permit unauthorized invocations.
+- Escape boundary enforcement.
 
-- **GitHub Security Advisory** (preferido para proyectos públicos)
-- **Email cifrado:** security@pollux-runtime.org
+---
 
-No publique vulnerabilidades en:
+### Model Ambiguity
 
-- Issues públicos
+Request/response models that:
+
+- Permit multiple interpretations.
+- Introduce undefined states.
+- Enable implicit behavior.
+
+---
+
+### Improper Exposure
+
+The boundary exposes:
+
+- Internal Kernel APIs.
+- Implementation details.
+- Private data structures.
+- Enforcement logic.
+
+---
+
+### Contribution Abuse
+
+Malicious contributions that attempt to:
+
+- Relax validation.
+- Introduce backdoors.
+- Weaken boundary.
+- Expand external authority.
+
+---
+
+## 4. Reporting Channels
+
+### Confirmed Vulnerabilities
+
+For confirmed vulnerabilities, use:
+
+- **GitHub Security Advisory** (preferred for public projects)
+- **Encrypted email:** security@pollux-runtime.org
+
+Do not publish vulnerabilities in:
+
+- Public issues
 - Pull requests
-- Foros
-- Redes sociales
+- Forums
+- Social media
 
 ---
 
-### Vulnerabilidades Potenciales
+### Potential Vulnerabilities
 
-Para debilidades potenciales o preguntas de seguridad:
+For potential weaknesses or security questions:
 
-- Abra un issue marcado como `security-question`
-- Describa el escenario sin detalles de explotación
-- Espere respuesta de mantenedores
-
----
-
-## 5. Contenido Obligatorio del Reporte
-
-Todo reporte debe incluir, como mínimo:
-
-- Resumen técnico claro y conciso del hallazgo.
-- Impacto estimado en términos de seguridad de frontera.
-- Operaciones de frontera afectadas.
-- Escenario de explotación (sin exploit funcional público).
-- Análisis de traducción o validación cuando sea aplicable.
-- Versión exacta de la crate o commit SHA.
-- Información de contacto del reportante.
-
-Reportes incompletos pueden retrasar la evaluación.
+- Open an issue marked `security-question`
+- Describe scenario without exploitation details
+- Await maintainer response
 
 ---
 
-## 6. Proceso y Tiempos
+## 5. Required Report Content
 
-- **Confirmación de recepción:**  
-  Máximo 72 horas.
+All reports must include, at minimum:
 
-- **Evaluación inicial:**  
-  Dentro de los siguientes 7 días se determinará severidad,
-  impacto y plan de acción preliminar.
+- Clear and concise technical summary of finding.
+- Estimated impact in boundary security terms.
+- Affected boundary operations.
+- Exploitation scenario (without public functional exploit).
+- Translation or validation analysis when applicable.
+- Exact crate version or commit SHA.
+- Reporter contact information.
 
-- **Mitigación y resolución:**  
-  Los plazos dependen de la severidad.
-  Fallos críticos que afecten impermeabilidad de frontera se priorizan para
-  corrección inmediata y versionado controlado.
-
-- **Divulgación coordinada:**  
-  Se coordinará divulgación pública después de:
-  - Corrección implementada
-  - Release publicado
-  - Usuarios notificados
-  - Tiempo prudencial para actualización
+Incomplete reports may delay evaluation.
 
 ---
 
-## 7. Reglas de Divulgación Responsable
+## 6. Process and Timeline
 
-Queda estrictamente prohibido:
+- **Receipt acknowledgment:**  
+  72 hours maximum.
 
-- Publicar vulnerabilidades antes de corrección.
-- Implementar exploits públicos.
-- Compartir detalles de explotación en canales no seguros.
-- Usar vulnerabilidades para demostración pública.
+- **Initial assessment:**  
+  Within 7 days, severity, impact, and preliminary action plan will be determined.
 
-Violaciones pueden resultar en:
+- **Mitigation and resolution:**  
+  Timeline depends on severity.
+  Critical failures affecting boundary impermeability are prioritized for
+  immediate correction and controlled versioning.
 
-- Exclusión del proyecto.
-- Reporte a plataformas de hospedaje.
-- Acción legal si corresponde.
-
----
-
-## 8. Reconocimiento
-
-Los reportantes de vulnerabilidades válidas serán:
-
-- Reconocidos en el advisory de seguridad.
-- Listados en archivo de créditos (si lo desean).
-- Agradecidos públicamente después de corrección.
-
-No ofrecemos recompensas monetarias en este momento.
+- **Coordinated disclosure:**  
+  Public disclosure will be coordinated after:
+  - Fix implemented
+  - Release published
+  - Users notified
+  - Reasonable update window
 
 ---
 
-## 9. Confidencialidad
+## 7. Responsible Disclosure Rules
 
-Todos los reportes de seguridad son considerados **confidenciales**
-hasta divulgación coordinada.
+Strictly prohibited:
 
-El acceso está limitado a:
+- Publishing vulnerabilities before fix.
+- Implementing public exploits.
+- Sharing exploitation details via insecure channels.
+- Using vulnerabilities for public demonstration.
 
-- Mantenedores del proyecto.
-- Equipo de seguridad de Pollux.
-- Personas necesarias para corrección.
+Violations may result in:
+
+- Project exclusion.
+- Reporting to hosting platforms.
+- Legal action if applicable.
 
 ---
 
-## 10. Contacto Legal
+## 8. Recognition
 
-Para consultas legales relacionadas con vulnerabilidades o divulgación:
+Reporters of valid vulnerabilities will be:
+
+- Recognized in security advisory.
+- Listed in credits file (if desired).
+- Publicly thanked after fix.
+
+No monetary bounties at this time.
+
+---
+
+## 9. Confidentiality
+
+All security reports are considered **confidential**
+until coordinated disclosure.
+
+Access is limited to:
+
+- Project maintainers.
+- Pollux security team.
+- Personnel required for fix.
+
+---
+
+## 10. Legal Contact
+
+For legal inquiries related to vulnerabilities or disclosure:
 
 legal@pollux-runtime.org
 
 ---
 
-## 11. Actualizaciones de Seguridad
+## 11. Security Updates
 
-Suscríbase a:
+Subscribe to:
 
-- GitHub Security Advisories de este repositorio
-- Release notes (todas las correcciones de seguridad se documentan)
+- GitHub Security Advisories for this repository
+- Release notes (all security fixes documented)
 
-No existe lista de correo dedicada en este momento.
+No dedicated mailing list currently.
 
 ---
 
-## 12. Alcance Fuera de Este Proyecto
+## 12. Scope Outside This Project
 
-Vulnerabilidades en:
+Vulnerabilities in:
 
 - Pollux Runtime
 - Pollux Capabilities
 - Pollux Contracts
 
-Deben reportarse en sus respectivos repositorios.
+Must be reported in their respective repositories.
 
-Este procedimiento aplica exclusivamente a Pollux Polyglot Native Bridge.
+This procedure applies exclusively to Pollux Polyglot Native Bridge.
 
 ---
 
-## 13. Revisión y Mantenimiento
+## 13. Policy Review
 
-Esta política será revisada periódicamente.
+This policy will be reviewed periodically.
 
-La versión vigente se mantiene en este repositorio.
+Current version maintained in this repository.
 

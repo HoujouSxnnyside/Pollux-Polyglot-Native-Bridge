@@ -1,223 +1,222 @@
 # Pollux Polyglot Native Bridge
-## Frontera Soberana de Integración
+## Sovereign Boundary for External Integration
 
-**Pollux Polyglot Native Bridge** no es una biblioteca de conveniencia.  
-No es un SDK.  
-No es una capa de abstracción.
+**Pollux Polyglot Native Bridge** is not a convenience library.  
+It is not an SDK.  
+It is not an abstraction layer.
 
-Es la **frontera soberana de autoridad** entre Pollux y ecosistemas de lenguajes externos.
+It is the **sovereign authority boundary** between Pollux and external language ecosystems.
 
-Este repositorio es **público y de código abierto**.  
-La apertura no implica flexibilidad arquitectónica.  
-La visibilidad no implica autoridad.
+This repository is **public and open source**.  
+Openness does not imply architectural flexibility.  
+Visibility does not imply authority.
 
-Este repositorio se encuentra en:  
+This repository is located at:  
 https://github.com/HoujouSxnnyside/Pollux-Polyglot-Native-Bridge
 
-Depende de:  
+It depends strictly on:  
 - Pollux Capabilities (https://github.com/HoujouSxnnyside/Pollux-Capabilities)  
 - Pollux Contracts (https://github.com/HoujouSxnnyside/Pollux-Contracts)
 
 ---
 
-## Función
+## Purpose
 
-Pollux Polyglot Native Bridge responde una única pregunta:
+Pollux Polyglot Native Bridge answers a single question:
 
-> ¿Cómo puede un sistema externo interactuar con Pollux sin obtener autoridad sobre él?
+> How can an external system interact with Pollux without gaining authority over it?
 
-No responde:
+It does not answer:
 
-- Cómo hacer a Pollux más accesible.
-- Cómo adaptar Pollux a convenciones externas.
-- Cómo simplificar la integración.
+- How to make Pollux more accessible.
+- How to adapt Pollux to external conventions.
+- How to simplify integration.
 
-Pollux no se adapta.  
-Los sistemas externos se adaptan a Pollux.
-
----
-
-## Naturaleza de la Frontera
-
-Esta capa es:
-
-- Un traductor de intención → solicitud de Pollux.
-- Un validador de contratos antes de cualquier invocación.
-- Una barrera impermeable contra fugas de autoridad.
-
-No es:
-
-- Un ejecutor de lógica de negocio.
-- Un tomador de decisiones de autorización.
-- Un caché de decisiones.
-- Un sistema de conveniencia.
+Pollux does not adapt.  
+External systems adapt to Pollux.
 
 ---
 
-## Relación con Pollux Runtime
+## Nature of the Boundary
 
-Pollux Polyglot Native Bridge **consume estrictamente**:
+This layer is:
 
-- Pollux Capabilities (vocabulario).
-- Pollux Contracts (reglas de autorización).
+- A translator of intent → Pollux request.
+- A contract validator before any invocation.
+- An impermeable barrier against authority leakage.
 
-No accede:
+It is not:
 
-- Al Kernel.
-- Al Scheduler.
-- A estructuras internas.
-- A lógica de enforcement.
-
-Toda interacción ocurre a través de contratos públicos.
-
-Esta separación no es estilística.  
-Es estructural.
+- An executor of business logic.
+- An authorization decision-maker.
+- A decision cache.
+- A convenience system.
 
 ---
 
-## Modelo de Solicitud / Respuesta
+## Relationship with Pollux Runtime
 
-Toda interacción externa ocurre mediante:
+Pollux Polyglot Native Bridge **strictly consumes**:
 
-- Objetos de solicitud explícitos.
-- Objetos de respuesta explícitos.
-- Sin estado compartido mutable.
-- Sin callbacks.
-- Sin contexto ambiental.
+- Pollux Capabilities (vocabulary).
+- Pollux Contracts (authorization rules).
 
-El modelo es:
+It does not access:
+
+- The Kernel.
+- The Scheduler.
+- Internal structures.
+- Enforcement logic.
+
+All interaction occurs through public contracts.
+
+This separation is not stylistic.  
+It is structural.
+
+---
+
+## Request / Response Model
+
+All external interaction occurs through:
+
+- Explicit request objects.
+- Explicit response objects.
+- No shared mutable state.
+- No callbacks.
+- No ambient context.
+
+The model is:
 
 - Serializable.
-- Inmutable una vez construido.
-- Cerrado (sin variantes "otras" o "personalizadas").
+- Immutable once constructed.
+- Closed (no "other" or "custom" variants).
 
-Si una solicitud no puede expresarse en este modelo, no se soporta.
+If a request cannot be expressed in this model, it is not supported.
 
 ---
 
-## Relación con Lenguajes Externos
+## Relationship with External Languages
 
-Esta capa es la **única fuente de verdad** para integraciones en:
+This layer is the **sole source of truth** for integrations into:
 
 - JavaScript / TypeScript (Pollux Polyglot JS).
 - .NET / C# (Pollux Polyglot .NET).
-- Cualquier futuro ecosistema autorizado.
+- Any future authorized ecosystem.
 
-No contiene lógica específica de lenguaje.  
-No adapta comportamiento por ecosistema.  
-No proporciona ergonomía conveniente.
+It contains no language-specific logic.  
+It does not adapt behavior by ecosystem.  
+It provides no convenient ergonomics.
 
-Los bindings por lenguaje consumen esta capa.  
-Esta capa no consume nada externo.
+Language bindings consume this layer.  
+This layer consumes nothing external.
 
 ---
 
-## Uso
+## Usage
 
-Este repositorio **no está diseñado para uso directo**.
+This repository is **not designed for direct use**.
 
-Los consumidores finales deben usar:
+End consumers must use:
 
 - Pollux Polyglot JS
 - Pollux Polyglot .NET
-- Otros bindings autorizados
+- Other authorized bindings
 
-Uso directo de esta capa requiere comprensión completa de:
+Direct use of this layer requires complete understanding of:
 
 - Pollux Capabilities
 - Pollux Contracts
-- Modelo de frontera
-- Semántica de validación
+- Boundary model
+- Validation semantics
 
-No existe documentación de uso.  
-No existen ejemplos de integración.  
-No existe soporte para uso directo.
-
----
-
-## Contribuciones
-
-Este repositorio acepta contribuciones bajo reglas estrictas.
-
-Consulte `CONTRIBUTING.md` para:
-
-- Qué tipos de contribuciones son aceptables.
-- Qué está explícitamente prohibido.
-- Proceso de revisión y aprobación.
-
-Las contribuciones no implican influencia sobre:
-
-- Arquitectura.
-- Modelo de autorización.
-- Superficie de API.
-- Decisiones de gobernanza.
-
-La autoridad permanece centralizada.
+No usage documentation exists.  
+No integration examples exist.  
+No support for direct use exists.
 
 ---
 
-## No Responsabilidades
+## Contributions
 
-Pollux Polyglot Native Bridge **no implementa**:
+This repository accepts contributions under strict rules.
 
-- Ejecución de extensiones.
-- Autorización de acciones.
-- Interpretación de políticas.
-- Lógica de negocio.
-- Despacho dinámico.
-- Reflexión o introspección.
-- Efectos colaterales fuera de las APIs públicas de Pollux.
+Consult `CONTRIBUTING.md` for:
 
-Estas responsabilidades pertenecen al Kernel y al Runtime.
+- What types of contributions are acceptable.
+- What is explicitly prohibited.
+- Review and approval process.
 
----
+Contributions do not imply influence over:
 
-## Postura de Seguridad
+- Architecture.
+- Authorization model.
+- API surface.
+- Governance decisions.
 
-Esta capa asume:
-
-- Todos los llamadores externos son no confiables.
-- Todas las entradas son hostiles.
-- Todo uso indebido es intencional.
-
-La seguridad aquí no es sobre exploits.  
-Es sobre **prevención de fuga de autoridad**.
-
-Cualquier ambigüedad es una vulnerabilidad.
-
-Reporte de vulnerabilidades: consulte `SECURITY.md`.
+Authority remains centralized.
 
 ---
 
-## Licencia
+## Non-Responsibilities
 
-Este proyecto está licenciado bajo MIT License.
+Pollux Polyglot Native Bridge **does not implement**:
 
-Consulte `LICENSE` para términos completos.
+- Extension execution.
+- Action authorization.
+- Policy interpretation.
+- Business logic.
+- Dynamic dispatch.
+- Reflection or introspection.
+- Side effects outside Pollux public APIs.
 
----
-
-## Compatibilidad
-
-Pollux Polyglot Native Bridge sigue versionado semántico estricto.
-
-Cada cambio implica:
-
-- Revisión formal del comité de arquitectura.
-- Análisis de impacto en bindings externos.
-- Validación de integridad de frontera.
-
-La estabilidad de la frontera no es opcional.  
-Es una **garantía permanente**.
+These responsibilities belong to the Kernel and the Runtime.
 
 ---
 
+## Security Posture
 
-## Principio de Cierre
+This layer assumes:
 
-Pollux Polyglot Native Bridge no busca flexibilidad.  
-Busca **impermeabilidad absoluta**.
+- All external callers are untrusted.
+- All inputs are hostile.
+- All misuse is intentional.
 
-Si la frontera permite ambigüedad,  
-ha fallado en su propósito.
+Security here is not about exploits.  
+It is about **prevention of authority leakage**.
+
+Any ambiguity is a vulnerability.
+
+Vulnerability reporting: consult `SECURITY.md`.
+
+---
+
+## License
+
+This project is licensed under MIT License.
+
+Consult `LICENSE` for complete terms.
+
+---
+
+## Compatibility
+
+Pollux Polyglot Native Bridge follows strict semantic versioning.
+
+Every change implies:
+
+- Formal architecture committee review.
+- Impact analysis on external bindings.
+- Boundary integrity validation.
+
+Boundary stability is not optional.  
+It is a **permanent guarantee**.
+
+---
+
+## Principle of Closure
+
+Pollux Polyglot Native Bridge does not seek flexibility.  
+It seeks **absolute impermeability**.
+
+If the boundary permits ambiguity,  
+it has failed in its purpose.
 

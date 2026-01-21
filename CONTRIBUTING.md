@@ -1,314 +1,314 @@
 # CONTRIBUTING
-## Política de Contribuciones a Pollux Polyglot Native Bridge
+## Contribution Policy for Pollux Polyglot Native Bridge
 
-Este repositorio es **público y de código abierto**.
+This repository is **public and open source**.
 
-La apertura no implica:
+Openness does not imply:
 
-- Flexibilidad arquitectónica.
-- Toma de decisiones colaborativa.
-- Negociación de principios de diseño.
-- Adaptación a conveniencia externa.
+- Architectural flexibility.
+- Collaborative decision-making.
+- Negotiation of design principles.
+- Adaptation to external convenience.
 
-Este documento define qué contribuciones son aceptables y bajo qué condiciones.
-
----
-
-## Principio Rector
-
-Pollux Polyglot Native Bridge es una **frontera de gobernanza**, no un proyecto comunitario.
-
-Las contribuciones son bienvenidas únicamente si:
-
-- Fortalecen la frontera.
-- No debilitan el aislamiento.
-- No expanden autoridad externa.
-- No introducen ambigüedad.
+This document defines what contributions are acceptable and under what conditions.
 
 ---
 
-## Contribuciones Aceptables
+## Guiding Principle
 
-### Corrección de Defectos
+Pollux Polyglot Native Bridge is a **governance boundary**, not a community project.
 
-Se aceptan correcciones que:
+Contributions are welcome only if they:
 
-- Resuelven fallos en validación de contratos.
-- Corrigen errores de traducción.
-- Reparan fugas de validación.
-- Restauran invariantes de frontera.
-
-No se aceptan "correcciones" que:
-
-- Relajan validación.
-- Introducen valores por defecto.
-- Agregan tolerancia a entradas inválidas.
-- Suavizan rechazo.
+- Strengthen the boundary.
+- Do not weaken isolation.
+- Do not expand external authority.
+- Do not introduce ambiguity.
 
 ---
 
-### Mejoras de Robustez
+## Acceptable Contributions
 
-Se aceptan mejoras que:
+### Defect Correction
 
-- Refuerzan fail-fast.
-- Agregan validación faltante.
-- Endurecen parsing.
-- Eliminan ambigüedad estructural.
+Accepted corrections:
 
-No se aceptan "mejoras" que:
+- Resolve failures in contract validation.
+- Correct translation errors.
+- Repair validation leaks.
+- Restore boundary invariants.
 
-- Agregan comodidad.
-- Introducen lógica adaptativa.
-- Permiten bypass de validación.
-- Relajan restricciones.
+Rejected "corrections":
 
----
-
-### Corrección de Documentación
-
-Se aceptan correcciones documentales que:
-
-- Clarifican invariantes.
-- Corrigen descripciones incorrectas.
-- Refuerzan la naturaleza de frontera.
-- Eliminan ambigüedad.
-
-No se aceptan cambios documentales que:
-
-- Agregan tutoriales.
-- Introducen ejemplos de uso.
-- Suavizan lenguaje.
-- Sugieren flexibilidad.
+- Relax validation.
+- Introduce default values.
+- Add tolerance for invalid inputs.
+- Soften rejection.
 
 ---
 
-### Actualización de Dependencias
+### Robustness Improvements
 
-Se aceptan actualizaciones de dependencias que:
+Accepted improvements:
 
-- Corrigen vulnerabilidades.
-- Mantienen compatibilidad de API.
-- No expanden superficie.
-- No introducen comportamiento nuevo.
+- Reinforce fail-fast behavior.
+- Add missing validation.
+- Harden parsing.
+- Eliminate structural ambiguity.
 
-Toda actualización requiere validación formal.
+Rejected "improvements":
 
----
-
-## Contribuciones Explícitamente Rechazadas
-
-### Expansión de Superficie
-
-No se aceptan contribuciones que:
-
-- Agregan nuevos tipos de solicitud.
-- Expanden modelos de payload.
-- Introducen nuevos estados de respuesta.
-- Agregan operaciones de frontera.
-
-La superficie de la frontera es cerrada.
+- Add convenience features.
+- Introduce adaptive logic.
+- Permit validation bypass.
+- Relax constraints.
 
 ---
 
-### Abstracciones de Conveniencia
+### Documentation Correction
 
-No se aceptan contribuciones que:
+Accepted documentation changes:
 
-- Agregan helpers.
-- Introducen builders.
-- Simplifican construcción de solicitudes.
-- Proporcionan DSLs.
+- Clarify invariants.
+- Correct incorrect descriptions.
+- Reinforce boundary nature.
+- Eliminate ambiguity.
 
-La frontera no busca ergonomía.
+Rejected documentation changes:
 
----
-
-### Lógica Específica de Lenguaje
-
-No se aceptan contribuciones que:
-
-- Agregan soporte para lenguajes específicos.
-- Introducen adaptadores por ecosistema.
-- Implementan serialización personalizada.
-- Agregan traits de conveniencia.
-
-La frontera es agnóstica al lenguaje.
+- Add tutorials.
+- Introduce usage examples.
+- Soften language.
+- Suggest flexibility.
 
 ---
 
-### Optimizaciones Prematuras
+### Dependency Updates
 
-No se aceptan contribuciones que:
+Accepted updates:
 
-- Agregan caché.
-- Introducen pooling.
-- Optimizan para casos específicos.
-- Comprometen claridad por rendimiento.
+- Fix vulnerabilities.
+- Maintain API compatibility.
+- Do not expand surface.
+- Do not introduce new behavior.
 
-La frontera prioriza corrección sobre velocidad.
-
----
-
-## Proceso de Contribución
-
-### 1. Verificación de Admisibilidad
-
-Antes de trabajar en una contribución:
-
-- Abra un issue describiendo el problema.
-- Espere confirmación de que el problema es válido.
-- Espere confirmación de que la solución es aceptable.
-
-No inicie trabajo sin aprobación previa.
+All updates require formal validation.
 
 ---
 
-### 2. Requisitos de Implementación
+## Explicitly Rejected Contributions
 
-Toda contribución debe:
+### Surface Expansion
 
-- Incluir tests que demuestren el problema.
-- Incluir tests que validen la corrección.
-- Mantener 100% de cobertura en código modificado.
-- No introducir warnings.
-- No degradar claridad.
+Rejected contributions that:
 
----
+- Add new request types.
+- Expand payload models.
+- Introduce new response states.
+- Add boundary operations.
 
-### 3. Requisitos de Pull Request
-
-Todo PR debe:
-
-- Referenciar el issue aprobado.
-- Incluir descripción técnica precisa.
-- Explicar por qué el cambio fortalece la frontera.
-- Demostrar que no relaja restricciones.
-- Incluir evidencia de tests pasando.
-
-PRs sin issue aprobado serán cerrados sin revisión.
+The boundary surface is closed.
 
 ---
 
-### 4. Revisión
+### Convenience Abstractions
 
-Todo PR será revisado por:
+Rejected contributions that:
 
-- Arquitectos del proyecto.
-- Mantenedores de Pollux Runtime.
-- Comité de gobernanza (si corresponde).
+- Add helpers.
+- Introduce builders.
+- Simplify request construction.
+- Provide DSLs.
 
-La revisión evaluará:
-
-- Corrección técnica.
-- Alineación arquitectónica.
-- Impacto en frontera.
-- Compatibilidad con bindings.
+The boundary does not seek ergonomics.
 
 ---
 
-### 5. Decisión Final
+### Language-Specific Logic
 
-Los mantenedores tienen autoridad final sobre:
+Rejected contributions that:
 
-- Aceptación o rechazo.
-- Solicitud de cambios.
-- Cierre sin merge.
+- Add support for specific languages.
+- Introduce ecosystem-specific adapters.
+- Implement custom serialization.
+- Add convenience traits.
 
-Las decisiones arquitectónicas no son negociables.
-
----
-
-## Expectativas de Contribuyentes
-
-### Cumplimiento de Principios
-
-Todo contribuyente debe:
-
-- Leer y comprender `design-principles.md` del proyecto Pollux.
-- Respetar invariantes de frontera.
-- No proponer expansiones de autoridad.
-- No intentar relajar restricciones.
+The boundary is language-agnostic.
 
 ---
 
-### Comunicación
+### Premature Optimization
 
-Toda comunicación debe ser:
+Rejected contributions that:
 
-- Técnica.
-- Precisa.
-- Respetuosa.
-- Libre de presión política o social.
+- Add caching.
+- Introduce pooling.
+- Optimize for specific cases.
+- Compromise clarity for performance.
 
-Argumentos basados en:
-
-- "Esto es más fácil"
-- "Otros proyectos lo hacen"
-- "La comunidad lo espera"
-
-No son válidos.
+The boundary prioritizes correctness over speed.
 
 ---
 
-### Respeto a Decisiones
+## Contribution Process
 
-Las decisiones arquitectónicas son:
+### 1. Admissibility Check
 
-- Finales.
-- No sujetas a votación.
-- No sujetas a popularidad.
-- No sujetas a presión.
+Before working on a contribution:
 
-Los contribuyentes que no respeten decisiones finales serán excluidos.
+- Open an issue describing the problem.
+- Await confirmation that the problem is valid.
+- Await confirmation that the solution is acceptable.
 
----
-
-## Licencia de Contribuciones
-
-Al contribuir a este proyecto, usted acepta:
-
-- Licenciar su contribución bajo MIT License.
-- Ceder derechos de modificación y redistribución.
-- No imponer restricciones adicionales.
-- No reclamar propiedad sobre código integrado.
+Do not begin work without prior approval.
 
 ---
 
-## Código de Conducta
+### 2. Implementation Requirements
 
-Este proyecto no adopta códigos de conducta externos.
+All contributions must:
 
-Las expectativas son:
-
-- Comunicación técnica profesional.
-- Respeto a decisiones arquitectónicas.
-- Ausencia de comportamiento disruptivo.
-
-Violaciones resultarán en exclusión permanente.
+- Include tests demonstrating the problem.
+- Include tests validating the fix.
+- Maintain 100% coverage on modified code.
+- Introduce no warnings.
+- Not degrade clarity.
 
 ---
 
-## Contacto
+### 3. Pull Request Requirements
 
-Para consultas sobre contribuciones potenciales:
+All PRs must:
 
-- Abra un issue describiendo la propuesta.
-- Espere respuesta de mantenedores.
-- No envíe PRs sin discusión previa.
+- Reference the approved issue.
+- Include precise technical description.
+- Explain why the change strengthens the boundary.
+- Demonstrate that it does not relax restrictions.
+- Include evidence of passing tests.
 
-No existe canal de discusión informal.  
-No existe Slack, Discord ni foros comunitarios.
+PRs without approved issue will be closed without review.
 
 ---
 
-## Principio de Cierre
+### 4. Review
 
-Este proyecto valora:
+All PRs will be reviewed by:
 
-- Corrección sobre conveniencia.
-- Gobernanza sobre popularidad.
-- Arquitectura sobre ergonomía.
+- Project architects.
+- Pollux Runtime maintainers.
+- Governance committee (if applicable).
 
-Las contribuciones que no compartan estos valores serán rechazadas.
+Review will evaluate:
+
+- Technical correctness.
+- Architectural alignment.
+- Boundary impact.
+- Compatibility with bindings.
+
+---
+
+### 5. Final Decision
+
+Maintainers have final authority over:
+
+- Acceptance or rejection.
+- Change requests.
+- Closure without merge.
+
+Architectural decisions are non-negotiable.
+
+---
+
+## Contributor Expectations
+
+### Principle Compliance
+
+All contributors must:
+
+- Read and understand Pollux `design-principles.md`.
+- Respect boundary invariants.
+- Not propose authority expansions.
+- Not attempt to relax restrictions.
+
+---
+
+### Communication
+
+All communication must be:
+
+- Technical.
+- Precise.
+- Respectful.
+- Free of political or social pressure.
+
+Arguments based on:
+
+- "This is easier"
+- "Other projects do this"
+- "The community expects this"
+
+Are invalid.
+
+---
+
+### Respect for Decisions
+
+Architectural decisions are:
+
+- Final.
+- Not subject to voting.
+- Not subject to popularity.
+- Not subject to pressure.
+
+Contributors who disrespect final decisions will be excluded.
+
+---
+
+## Contribution Licensing
+
+By contributing to this project, you agree to:
+
+- License your contribution under MIT License.
+- Cede modification and redistribution rights.
+- Impose no additional restrictions.
+- Claim no ownership over integrated code.
+
+---
+
+## Code of Conduct
+
+This project does not adopt external codes of conduct.
+
+Expectations are:
+
+- Professional technical communication.
+- Respect for architectural decisions.
+- Absence of disruptive behavior.
+
+Violations will result in permanent exclusion.
+
+---
+
+## Contact
+
+For inquiries about potential contributions:
+
+- Open an issue describing the proposal.
+- Await maintainer response.
+- Do not send PRs without prior discussion.
+
+No informal discussion channel exists.  
+No Slack, Discord, or community forums.
+
+---
+
+## Principle of Closure
+
+This project values:
+
+- Correctness over convenience.
+- Governance over popularity.
+- Architecture over ergonomics.
+
+Contributions not sharing these values will be rejected.
 

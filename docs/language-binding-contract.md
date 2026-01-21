@@ -1,122 +1,122 @@
 # Language Binding Contract
-*(Contrato de Bindings por Lenguaje)*
+*(Contract for Language Bindings)*
 
 ---
 
-## Naturaleza del Contrato
+## Nature of the Contract
 
-Pollux Polyglot Native Bridge define el contrato que **todos** los bindings por lenguaje
-deben cumplir.
+Pollux Polyglot Native Bridge defines the contract that **all** language bindings
+must comply with.
 
-No define implementación.  
-Define **frontera**.
-
----
-
-## Responsabilidades de Bindings
-
-Todo binding por lenguaje (JS, .NET, etc.) **debe**:
-
-1. Traducir intención del lenguaje → `BridgeRequest`.
-2. Invocar `PolyglotBridge::process_request`.
-3. Traducir `BridgeResponse` → representación del lenguaje.
-4. Propagar errores sin silenciarlos.
-5. No implementar lógica de autorización.
-6. No cachear decisiones.
-7. No adaptar comportamiento por contexto.
+It does not define implementation.  
+It defines **boundary**.
 
 ---
 
-## Responsabilidades Prohibidas
+## Binding Responsibilities
 
-Todo binding por lenguaje **no debe**:
+Every language binding (JS, .NET, etc.) **must**:
 
-- Acceder directamente a Pollux Runtime.
-- Acceder directamente a Pollux Contracts.
-- Acceder directamente a Pollux Capabilities.
-- Implementar lógica de validación.
-- Inferir valores por defecto.
-- Negociar compatibilidad.
-- Suavizar rechazo.
-- Ocultar estados de error.
+1. Translate language intent → `BridgeRequest`.
+2. Invoke `PolyglotBridge::process_request`.
+3. Translate `BridgeResponse` → language representation.
+4. Propagate errors without silencing.
+5. Not implement authorization logic.
+6. Not cache decisions.
+7. Not adapt behavior by context.
 
 ---
 
-## Modelo de Interacción
+## Prohibited Responsibilities
 
-### Unidireccionalidad
+Every language binding **must not**:
+
+- Access Pollux Runtime directly.
+- Access Pollux Contracts directly.
+- Access Pollux Capabilities directly.
+- Implement validation logic.
+- Infer default values.
+- Negotiate compatibility.
+- Soften rejection.
+- Hide error states.
+
+---
+
+## Interaction Model
+
+### Unidirectionality
 
 Binding → Bridge → Pollux
 
-Nunca:
+Never:
 
 Pollux → Bridge → Binding
 
-No existen callbacks.  
-No existen notificaciones inversas.  
-No existe push de eventos.
+No callbacks exist.  
+No reverse notifications exist.  
+No event push exists.
 
 ---
 
-### Aislamiento de Estado
+### State Isolation
 
-Cada invocación es independiente.
+Each invocation is independent.
 
-No existe:
+There is no:
 
-- Estado de sesión.
-- Caché de autorización.
-- Contexto persistente.
+- Session state.
+- Authorization cache.
+- Persistent context.
 
 ---
 
 ### Fail-Fast
 
-Ante cualquier fallo, el binding debe:
+On any failure, the binding must:
 
-- Propagar el error explícitamente.
-- No reintentar automáticamente.
-- No silenciar.
-- No interpretar.
-
----
-
-## Compatibilidad de Bindings
-
-### Versionado
-
-Los bindings deben:
-
-- Especificar versión de Bridge soportada.
-- Rechazar invocaciones si Bridge es incompatible.
-- No asumir retrocompatibilidad implícita.
+- Propagate the error explicitly.
+- Not retry automatically.
+- Not silence.
+- Not interpret.
 
 ---
 
-### Evolución
+## Binding Compatibility
 
-Si Bridge cambia su modelo:
+### Versioning
 
-- Los bindings deben actualizarse.
-- No existe adaptación automática.
-- No existe negociación de versión.
+Bindings must:
 
----
-
-## Principio de Subordinación
-
-Los bindings **sirven** al Bridge.
-
-El Bridge no sirve a los bindings.
-
-Si un binding requiere funcionalidad no soportada,  
-el binding está mal diseñado.
+- Specify supported Bridge version.
+- Reject invocations if Bridge is incompatible.
+- Not assume implicit backward compatibility.
 
 ---
 
-## Principio de Cierre
+### Evolution
 
-La frontera no se adapta.
+If Bridge changes its model:
 
-Los bindings se adaptan.
+- Bindings must update.
+- No automatic adaptation exists.
+- No version negotiation exists.
+
+---
+
+## Principle of Subordination
+
+Bindings **serve** the Bridge.
+
+The Bridge does not serve bindings.
+
+If a binding requires unsupported functionality,  
+the binding is poorly designed.
+
+---
+
+## Principle of Closure
+
+The boundary does not adapt.
+
+Bindings adapt.
 

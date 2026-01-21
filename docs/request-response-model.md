@@ -1,28 +1,28 @@
 # Request Response Model
-*(Modelo de Solicitud / Respuesta)*
+*(Request / Response Model)*
 
 ---
 
-## Naturaleza del Modelo
+## Nature of the Model
 
-El modelo de solicitud/respuesta de Pollux Polyglot Native Bridge es:
+The request/response model of Pollux Polyglot Native Bridge is:
 
-- Cerrado.
-- Explícito.
-- Inmutable.
+- Closed.
+- Explicit.
+- Immutable.
 - Serializable.
-- Sin estado compartido.
+- Without shared state.
 
-Si una interacción no puede expresarse en este modelo,  
-no se soporta.
+If an interaction cannot be expressed in this model,  
+it is not supported.
 
 ---
 
-## Estructura de Solicitud
+## Request Structure
 
 ### BridgeRequest
 
-Toda solicitud externa se estructura como:
+All external requests are structured as:
 
 ```
 BridgeRequest {
@@ -31,49 +31,49 @@ BridgeRequest {
 }
 ```
 
-**Invariantes:**
+**Invariants:**
 
-- `request_type` es cerrado (enumeración finita).
-- `payload` corresponde directamente a `request_type`.
-- No existen variantes "otras" o "personalizadas".
+- `request_type` is closed (finite enumeration).
+- `payload` corresponds directly to `request_type`.
+- No "other" or "custom" variants exist.
 
 ---
 
 ### BridgeRequestType
 
-Tipos de solicitud soportados:
+Supported request types:
 
 - `ValidateManifest`
 - `ValidateCapabilityRequest`
 - `ValidateLifecycleTransition`
 - `ValidateTargetCompatibility`
 
-Este conjunto es **exhaustivo**.
+This set is **exhaustive**.
 
-Cualquier operación no representable aquí no es soportada.
+Any operation not representable here is not supported.
 
 ---
 
 ### BridgePayload
 
-Carga útil específica por tipo de solicitud:
+Payload specific to each request type:
 
 - `ManifestValidation`: capabilities, target, module_type.
 - `CapabilityRequest`: capability.
 - `LifecycleTransition`: from_phase, to_phase.
 - `TargetCompatibility`: declared_target, runtime_target.
 
-Cada payload es **cerrado**.  
-No existen campos opcionales ambiguos.  
-No existen valores por defecto implícitos.
+Each payload is **closed**.  
+No ambiguous optional fields exist.  
+No implicit default values exist.
 
 ---
 
-## Estructura de Respuesta
+## Response Structure
 
 ### BridgeResponse
 
-Toda respuesta es:
+All responses are:
 
 ```
 BridgeResponse {
@@ -82,87 +82,87 @@ BridgeResponse {
 }
 ```
 
-**Invariantes:**
+**Invariants:**
 
-- `status` es cerrado (enumeración finita).
-- `reason` es `Some` cuando `status` es `Rejected` o `InvalidRequest`.
-- `reason` es `None` cuando `status` es `Approved`.
+- `status` is closed (finite enumeration).
+- `reason` is `Some` when `status` is `Rejected` or `InvalidRequest`.
+- `reason` is `None` when `status` is `Approved`.
 
 ---
 
 ### BridgeResponseStatus
 
-Estados de respuesta soportados:
+Supported response states:
 
-- `Approved`: solicitud válida y conforme a contratos.
-- `Rejected`: solicitud viola contratos.
-- `InvalidRequest`: solicitud estructuralmente inválida.
+- `Approved`: request valid and compliant with contracts.
+- `Rejected`: request violates contracts.
+- `InvalidRequest`: request structurally invalid.
 
-Este conjunto es **exhaustivo**.
+This set is **exhaustive**.
 
-No existen estados parciales.  
-No existen advertencias.  
-No existen sugerencias.
+No partial states exist.  
+No warnings exist.  
+No suggestions exist.
 
 ---
 
-## Semántica de Serialización
+## Serialization Semantics
 
-El modelo está diseñado para ser serializable en:
+The model is designed to be serializable in:
 
 - JSON.
 - MessagePack.
 - Protocol Buffers.
-- Cualquier formato estructurado.
+- Any structured format.
 
-No depende de:
+It does not depend on:
 
 - Callbacks.
 - Closures.
-- Referencias mutables.
-- Estado ambiental.
+- Mutable references.
+- Ambient state.
 
 ---
 
-## Invariantes del Modelo
+## Model Invariants
 
-### Inmutabilidad
+### Immutability
 
-Una vez construida, una solicitud no puede mutar.  
-Una vez generada, una respuesta no puede mutar.
-
----
-
-### Ausencia de Estado Compartido
-
-Solicitud y respuesta son valores independientes.
-
-No existe:
-
-- Estado de sesión.
-- Contexto compartido.
-- Caché de decisiones.
-
-Cada solicitud es **autónoma**.
+Once constructed, a request cannot mutate.  
+Once generated, a response cannot mutate.
 
 ---
 
-### Determinismo
+### Absence of Shared State
 
-Dada la misma solicitud, la respuesta es siempre idéntica.
+Request and response are independent values.
 
-No depende de:
+There is no:
 
-- Tiempo.
-- Estado externo.
-- Ejecuciones previas.
+- Session state.
+- Shared context.
+- Decision cache.
+
+Each request is **autonomous**.
 
 ---
 
-## Principio de Cierre
+### Determinism
 
-El modelo no crece por conveniencia.
+Given the same request, the response is always identical.
 
-Si una operación no puede expresarse aquí,  
-no pertenece a la frontera.
+It does not depend on:
+
+- Time.
+- External state.
+- Prior executions.
+
+---
+
+## Principle of Closure
+
+The model does not grow for convenience.
+
+If an operation cannot be expressed here,  
+it does not belong at the boundary.
 

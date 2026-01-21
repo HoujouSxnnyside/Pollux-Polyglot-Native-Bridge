@@ -1,152 +1,152 @@
 # Boundary Enforcement
-*(Enforcement de Frontera en Pollux Polyglot)*
+*(Boundary Enforcement in Pollux Polyglot)*
 
 ---
 
-## Naturaleza del Enforcement
+## Nature of Enforcement
 
-Pollux Polyglot Native Bridge no autoriza.  
-No ejecuta.  
-No decide.
+Pollux Polyglot Native Bridge does not authorize.  
+It does not execute.  
+It does not decide.
 
-**Valida**.
+**It validates**.
 
-Toda solicitud externa es sometida a validación de contrato **antes** de cualquier
-interacción con Pollux Runtime.
-
----
-
-## Modelo de Validación
-
-### Validación de Manifest
-
-Solicitud externa provee:
-
-- Lista de capacidades solicitadas.
-- Target declarado.
-- Tipo de módulo.
-
-La frontera:
-
-1. Parsea capacidades contra vocabulario canónico (Pollux Capabilities).
-2. Parsea target y tipo de módulo.
-3. Invoca `validate_authorization` de Pollux Contracts.
-4. Retorna `Approved` o `Rejected` con razón.
-
-No existe negociación.  
-No existe retry automático.  
-No existe escalada progresiva.
+All external requests are subject to contract validation **before** any
+interaction with Pollux Runtime.
 
 ---
 
-### Validación de Solicitud de Capacidad
+## Validation Model
 
-Solicitud externa provee:
+### Manifest Validation
+
+External request provides:
+
+- List of requested capabilities.
+- Declared target.
+- Module type.
+
+The boundary:
+
+1. Parses capabilities against canonical vocabulary (Pollux Capabilities).
+2. Parses target and module type.
+3. Invokes `validate_authorization` from Pollux Contracts.
+4. Returns `Approved` or `Rejected` with reason.
+
+No negotiation exists.  
+No automatic retry exists.  
+No progressive escalation exists.
+
+---
+
+### Capability Request Validation
+
+External request provides:
 
 - Capability string.
 
-La frontera:
+The boundary:
 
-1. Parsea contra vocabulario canónico.
-2. Retorna `Approved` si existe, `InvalidRequest` si no.
+1. Parses against canonical vocabulary.
+2. Returns `Approved` if exists, `InvalidRequest` if not.
 
-No valida autorización contextual aquí.  
-Solo valida existencia en vocabulario.
-
----
-
-### Validación de Transición de Ciclo de Vida
-
-Solicitud externa provee:
-
-- Fase origen.
-- Fase destino.
-
-La frontera:
-
-1. Parsea fases contra enumeración canónica.
-2. Invoca `validate_lifecycle_transition` de Pollux Contracts.
-3. Retorna `Approved` o `Rejected` con razón.
-
-No modifica estado.  
-No ejecuta transición.  
-Solo valida admisibilidad.
+Does not validate contextual authorization here.  
+Only validates existence in vocabulary.
 
 ---
 
-### Validación de Compatibilidad de Target
+### Lifecycle Transition Validation
 
-Solicitud externa provee:
+External request provides:
 
-- Target declarado.
-- Target de runtime.
+- Source phase.
+- Destination phase.
 
-La frontera:
+The boundary:
 
-1. Parsea targets.
-2. Invoca `validate_target` de Pollux Contracts.
-3. Retorna `Approved` o `Rejected` con razón.
+1. Parses phases against canonical enumeration.
+2. Invokes `validate_lifecycle_transition` from Pollux Contracts.
+3. Returns `Approved` or `Rejected` with reason.
 
-No adapta targets.  
-No negocia compatibilidad.
+Does not modify state.  
+Does not execute transition.  
+Only validates admissibility.
 
 ---
 
-## Estados de Respuesta
+### Target Compatibility Validation
+
+External request provides:
+
+- Declared target.
+- Runtime target.
+
+The boundary:
+
+1. Parses targets.
+2. Invokes `validate_target` from Pollux Contracts.
+3. Returns `Approved` or `Rejected` with reason.
+
+Does not adapt targets.  
+Does not negotiate compatibility.
+
+---
+
+## Response States
 
 ### Approved
 
-La solicitud es válida y cumple con todos los contratos.
+The request is valid and complies with all contracts.
 
-No implica ejecución.  
-Implica admisibilidad formal.
+Does not imply execution.  
+Implies formal admissibility.
 
 ---
 
 ### Rejected
 
-La solicitud viola uno o más contratos.
+The request violates one or more contracts.
 
-La razón es explícita.  
-No existe retry automático.  
-No existe sugerencia de corrección.
+The reason is explicit.  
+No automatic retry exists.  
+No correction suggestion exists.
 
 ---
 
 ### InvalidRequest
 
-La solicitud es estructuralmente inválida:
+The request is structurally invalid:
 
-- Capacidad inexistente.
-- Target inválido.
-- Fase inválida.
-- Tipo de módulo inválido.
+- Nonexistent capability.
+- Invalid target.
+- Invalid phase.
+- Invalid module type.
 
-No es una violación de contrato.  
-Es una falla de traducción.
-
----
-
-## Principio de No Interpretación
-
-La frontera no interpreta intención.
-
-Si una solicitud no se expresa exactamente en el modelo cerrado,  
-no existe.
-
-No hay:
-
-- Inferencia de valores por defecto.
-- Traducción de sinónimos.
-- Adaptación a convenciones externas.
-- Corrección automática.
+Not a contract violation.  
+A translation failure.
 
 ---
 
-## Principio de Cierre
+## Principle of Non-Interpretation
 
-La frontera es impermeable.
+The boundary does not interpret intent.
 
-Si algo puede filtrarse,  
-la frontera ha fallado.
+If a request is not expressed exactly in the closed model,  
+it does not exist.
+
+There is no:
+
+- Inference of default values.
+- Translation of synonyms.
+- Adaptation to external conventions.
+- Automatic correction.
+
+---
+
+## Principle of Closure
+
+The boundary is impermeable.
+
+If anything can leak,  
+the boundary has failed.
 
